@@ -13,7 +13,7 @@
 
 /**
  * struct stack_s - a stack(or queue) represent by a doubly linked list
- * @i: integer
+ * @m: integer
  * @prev: refers to the stack(or queue) of previous element
  * @next: refers to the next element of the stack (or queue)
  *
@@ -22,7 +22,7 @@
  */
 typedef struct stack_s
 {
-        int i;
+        int m;
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
@@ -30,7 +30,7 @@ typedef struct stack_s
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
- * @n: function to handle the opcode
+ * @m: function to handle the opcode
  *
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
@@ -38,15 +38,15 @@ typedef struct stack_s
 typedef struct instruction_s
 {
         char *opcode;
-        void (*n)(stack_t **stack, unsigned int line_number);
+        void (*m)(stack_t **stack, unsigned int l_number);
 } instruction_t;
 
 extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 
 /*file operations*/
-void open_file(char *file_name);
-int parse_line(char *buffer, int line_number, int format);
+void open_file(char *f_name);
+int parse_line(char *buffer, int l_number, int frmt);
 void read_file(FILE *);
 int len_chars(FILE *);
 void find_func(char *, char *, int, int);

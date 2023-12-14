@@ -46,8 +46,8 @@ void add_nodes(stack_t **stack, unsigned int line_number)
 		more_err(8, line_number, "add");
 
 	(*stack) = (*stack)->next;
-	sum = (*stack)->n + (*stack)->prev->n;
-	(*stack)->n = sum;
+	sum = (*stack)->m + (*stack)->prev->m;
+	(*stack)->m = sum;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }
@@ -68,8 +68,8 @@ void sub_nodes(stack_t **stack, unsigned int line_number)
 
 
 	(*stack) = (*stack)->next;
-	sum = (*stack)->n - (*stack)->prev->n;
-	(*stack)->n = sum;
+	sum = (*stack)->m - (*stack)->prev->m;
+	(*stack)->m = sum;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }
@@ -87,11 +87,11 @@ void div_nodes(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		more_err(8, line_number, "div");
 
-	if ((*stack)->n == 0)
+	if ((*stack)->m == 0)
 		more_err(9, line_number);
 	(*stack) = (*stack)->next;
-	sum = (*stack)->n / (*stack)->prev->n;
-	(*stack)->n = sum;
+	sum = (*stack)->m / (*stack)->prev->m;
+	(*stack)->m = sum;
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }

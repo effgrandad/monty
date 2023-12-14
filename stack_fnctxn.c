@@ -35,10 +35,10 @@ void print_stack(stack_t **stack, unsigned int l_number)
 	(void) l_number;
 	if (stack == NULL)
 		exit(EXIT_FAILURE);
-	tmp = *stack;
+	temp = *stack;
 	while (temp != NULL)
 	{
-		printf("%d\n", temp->n);
+		printf("%d\n", temp->m);
 		temp = temp->next;
 	}
 }
@@ -56,7 +56,7 @@ void pop_top(stack_t **stack, unsigned int l_number)
 		more_err(7, l_number);
 
 	temp = *stack;
-	*stack = tmp->next;
+	*stack = temp->next;
 	if (*stack != NULL)
 		(*stack)->prev = NULL;
 	free(temp);
@@ -67,9 +67,9 @@ void pop_top(stack_t **stack, unsigned int l_number)
  * @stack: Points to a pointer pointing to top node of the stack.
  * @l_number: Interger representing the line number of of the opcode.
  */
-void print_top(stack_t **stack, unsigned int line_number)
+void print_top(stack_t **stack, unsigned int l_number)
 {
 	if (stack == NULL || *stack == NULL)
 		more_err(6, l_number);
-	printf("%d\n", (*stack)->n);
+	printf("%d\n", (*stack)->m);
 }

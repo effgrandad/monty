@@ -78,7 +78,7 @@ int parse_line(char *buffer, int line_number, int frmt)
  * if 1 nodes will be entered as a queue.
  * Return: void
  */
-void find_func(char *opcode, char *value, int l_n, int frmt)
+void find_func(char *opcode, char *value, int l_n, int format)
 {
 	int j;
 	int flag;
@@ -109,7 +109,7 @@ void find_func(char *opcode, char *value, int l_n, int frmt)
 	{
 		if (strcmp(opcode, func_list[j].opcode) == 0)
 		{
-			call_fun(func_list[j].f, opcode, value, l_n, frmt);
+			call_fun(func_list[j].fd, opcode, value, l_n, format);
 			flag = 0;
 		}
 	}
@@ -127,7 +127,7 @@ void find_func(char *opcode, char *value, int l_n, int frmt)
  * @format: Format specifier. If 0 Nodes will be entered as a stack.
  * if 1 nodes will be entered as a queue.
  */
-void call_fun(op_func func, char *op, char *val, int l_n, int frmt)
+void call_fun(op_func func, char *op, char *val, int l_n, int format)
 {
 	stack_t *node;
 	int flag;
@@ -149,9 +149,9 @@ void call_fun(op_func func, char *op, char *val, int l_n, int frmt)
 				err(5, l_n);
 		}
 		node = create_node(atoi(val) * flag);
-		if (frmt == 0)
+		if (format == 0)
 			func(&node, l_n);
-		if (frmt == 1)
+		if (format == 1)
 			add_to_queue(&node, l_n);
 	}
 	else

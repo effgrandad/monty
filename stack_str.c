@@ -10,11 +10,11 @@ void print_char(stack_t **stack, unsigned int l_number)
 	int ascii;
 
 	if (stack == NULL || *stack == NULL)
-		string_err(11, line_number);
+		string_err(11, l_number);
 
-	ascii = (*stack)->n;
+	ascii = (*stack)->m;
 	if (ascii < 0 || ascii > 127)
-		string_err(10, line_number);
+		string_err(10, l_number);
 	printf("%c\n", ascii);
 }
 
@@ -37,7 +37,7 @@ void print_str(stack_t **stack, __attribute__((unused))unsigned int lyn)
 	temp = *stack;
 	while (temp != NULL)
 	{
-		ascii = temp->n;
+		ascii = temp->m;
 		if (ascii <= 0 || ascii > 127)
 			break;
 		printf("%c", ascii);
