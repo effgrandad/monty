@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
  * @n: Number to go inside the node.
  * Return: Upon sucess a pointer to the node. Otherwise NULL.
  */
-stack_t *create_node(int m)
+stack_t *create_node(int n)
 {
 	stack_t *node;
 
@@ -34,7 +34,7 @@ stack_t *create_node(int m)
 		err(4);
 	node->next = NULL;
 	node->prev = NULL;
-	node->m = m;
+	node->n = n;
 	return (node);
 }
 
@@ -43,16 +43,16 @@ stack_t *create_node(int m)
  */
 void free_nodes(void)
 {
-	stack_t *tmp;
+	stack_t *temp;
 
 	if (head == NULL)
 		return;
 
 	while (head != NULL)
 	{
-		tmp = head;
+		temp = head;
 		head = head->next;
-		free(tmp);
+		free(temp);
 	}
 }
 
@@ -64,7 +64,7 @@ void free_nodes(void)
  */
 void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
-	stack_t *tmp;
+	stack_t *temp;
 
 	if (new_node == NULL || *new_node == NULL)
 		exit(EXIT_FAILURE);
@@ -73,11 +73,11 @@ void add_to_queue(stack_t **new_node, __attribute__((unused))unsigned int ln)
 		head = *new_node;
 		return;
 	}
-	tmp = head;
-	while (tmp->next != NULL)
-		tmp = tmp->next;
+	temp = head;
+	while (temp->next != NULL)
+		temp = temp->next;
 
-	tmp->next = *new_node;
-	(*new_node)->prev = tmp;
+	temp->next = *new_node;
+	(*new_node)->prev = temp;
 
 }

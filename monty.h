@@ -8,21 +8,19 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <stdarg.h>
-#include <fcntl.h>
-#include <ctype.h>
 
 /**
- * struct stack_s - a stack(or queue) represent by a doubly linked list
- * @m: integer
- * @prev: refers to the stack(or queue) of previous element
- * @next: refers to the next element of the stack (or queue)
+ * struct stack_s - doubly linked list representation of a stack (or queue)
+ * @n: integer
+ * @prev: points to the previous element of the stack (or queue)
+ * @next: points to the next element of the stack (or queue)
  *
  * Description: doubly linked list node structure
  * for stack, queues, LIFO, FIFO
  */
 typedef struct stack_s
 {
-        int m;
+        int n;
         struct stack_s *prev;
         struct stack_s *next;
 } stack_t;
@@ -30,7 +28,7 @@ typedef struct stack_s
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
- * @m: function to handle the opcode
+ * @f: function to handle the opcode
  *
  * Description: opcode and its function
  * for stack, queues, LIFO, FIFO
@@ -38,15 +36,15 @@ typedef struct stack_s
 typedef struct instruction_s
 {
         char *opcode;
-        void (*m)(stack_t **stack, unsigned int l_number);
+        void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 extern stack_t *head;
 typedef void (*op_func)(stack_t **, unsigned int);
 
 /*file operations*/
-void open_file(char *f_name);
-int parse_line(char *buffer, int l_number, int frmt);
+void open_file(char *file_name);
+int parse_line(char *buffer, int line_number, int format);
 void read_file(FILE *);
 int len_chars(FILE *);
 void find_func(char *, char *, int, int);

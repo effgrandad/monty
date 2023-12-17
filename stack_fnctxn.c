@@ -1,11 +1,12 @@
 #include "monty.h"
 
+
 /**
- * add_to_stack - Adds  node to the stack.
- * @new_node: Pointer to the new node.
- * @lyn: Interger representing the line number of of the opcode.
+ * add_to_stack - sums node to the stack.
+ * @new_node: Pointer pointing to new node.
+ * @ln: Interger representing the line number of of the opcode.
  */
-void add_to_stack(stack_t **new_node, __attribute__((unused))unsigned int lyn)
+void add_to_stack(stack_t **new_node, __attribute__((unused))unsigned int ln)
 {
 	stack_t *temp;
 
@@ -24,36 +25,36 @@ void add_to_stack(stack_t **new_node, __attribute__((unused))unsigned int lyn)
 
 
 /**
- * print_stack - sums a node to the stack.
- * @stack: Points to a pointer pointing to top node of the stack.
- * @l_number: line number of  the opcode.
+ * print_stack - sums node to the stack.
+ * @stack: Pointer to a pointer that points to top node of a stack.
+ * @line_number: line number of  the opcode.
  */
-void print_stack(stack_t **stack, unsigned int l_number)
+void print_stack(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
-	(void) l_number;
+	(void) line_number;
 	if (stack == NULL)
 		exit(EXIT_FAILURE);
 	temp = *stack;
 	while (temp != NULL)
 	{
-		printf("%d\n", temp->m);
+		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
 }
 
 /**
- * pop_top - sums a node to the stack.
- * @stack: Points to a pointer pointing to top node of the stack.
- * @l_number: Interger representing the line number of of the opcode.
+ * pop_top - Adds nodes the stack.
+ * @stack: Pointer to a pointer that points to top node of a stack.
+ * @line_number: Interger representing the line number of of the opcode.
  */
-void pop_top(stack_t **stack, unsigned int l_number)
+void pop_top(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 
 	if (stack == NULL || *stack == NULL)
-		more_err(7, l_number);
+		more_err(7, line_number);
 
 	temp = *stack;
 	*stack = temp->next;
@@ -63,13 +64,13 @@ void pop_top(stack_t **stack, unsigned int l_number)
 }
 
 /**
- * print_top - displays the top node of the stack.
- * @stack: Points to a pointer pointing to top node of the stack.
- * @l_number: Interger representing the line number of of the opcode.
+ * print_top - displays the top node of a stack.
+ * @stack: Pointer to a pointer that points to top node of a stack.
+ * @line_number: Interger representing the line number of of the opcode.
  */
-void print_top(stack_t **stack, unsigned int l_number)
+void print_top(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
-		more_err(6, l_number);
-	printf("%d\n", (*stack)->m);
+		more_err(6, line_number);
+	printf("%d\n", (*stack)->n);
 }
